@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:50:40 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/07/28 20:04:41 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:11:32 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,18 @@ void	ifpointer(uintptr_t number, t_hint *loco)
 	}
 	ft_putstr_fd(string, 1);
 	free(string);
+}
+
+void	stringo(char *string, t_hint *loco)
+{
+	if (string == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		loco->count += 6;
+	}
+	else
+	{
+		ft_putstr_fd(string, 1);
+		loco->count += ft_strlen(string);
+	}
 }

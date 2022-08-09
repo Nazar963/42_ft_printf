@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naal-jen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:58:14 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/05/09 10:25:50 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/08/05 18:58:21 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+// #include <stdio.h>
 #include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
@@ -19,13 +19,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*str;
 
+	i = 0;
 	str = (char *)malloc((ft_strlen(s) + 1) * sizeof(*str));
 	if (!str)
-	{
 		return (NULL);
-	}
-	str = (char *)s;
-	while (str[i])
+	while (s[i])
 	{
 		str[i] = (*f)(i, s[i]);
 		i++;
@@ -33,7 +31,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-
 /*char	mod(unsigned int i, char str)
 {
 	return (str - 32);

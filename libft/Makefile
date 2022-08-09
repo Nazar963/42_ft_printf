@@ -30,7 +30,7 @@
 # not requiring compilation or assembly, are ignored.
 
 
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 INC = -I.
 AR = ar

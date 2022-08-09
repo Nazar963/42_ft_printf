@@ -3,43 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:49:07 by coder             #+#    #+#             */
-/*   Updated: 2022/02/09 12:49:07 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/05 17:06:42 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
-//#include <bsd/string.h>
+// #include <stdio.h>
+// #include <bsd/string.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char		*d;
-	const char	*s;
-	size_t		n;
+	size_t	i;
 
-	d = dst;
-	s = src;
-	n = size;
-	if (n != 0)
+	i = 0;
+	if (size == 0)
 	{
-		while (--n != 0)
-		{
-			*d++ = *s++;
-			if (*d == '\0' && *s == '\0')
-				break ;
-		}
+		while (src[i])
+			i++;
+		return (i);
 	}
-	if (n == 0)
+	while (i < size - 1 && src[i] != '\0')
 	{
-		if (size != 0)
-			*d = '\0';
-		while (*s++)
-			;
+		dst[i] = src[i];
+		i++;
 	}
-	return (s - src - 1);
+	if (i < size)
+		dst[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }
 /*int main(void)
 {
@@ -82,6 +77,16 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
     char da4[] = "bellow";
     printf("4-original: %ld\n", strlcpy(da4, sa4, 0));
     printf("4-original: %s\n\n", da4);
+    
+    //5
+    char as4[] = "lorem";
+    char ad4[] = "rrrrrr";
+    printf("4-mine: %ld\n", ft_strlcpy(ad4, as4, 15));
+    printf("4-mine: %s\n", ad4);
+    char asa4[] = "lorem";
+    char ada4[] = "rrrrrr";
+    printf("4-original: %ld\n", strlcpy(ada4, asa4, 15));
+    printf("4-original: %s\n\n", ada4);
 
     return (0);
 }*/

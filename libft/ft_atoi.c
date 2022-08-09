@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 12:49:07 by coder             #+#    #+#             */
-/*   Updated: 2022/02/09 12:49:07 by coder            ###   ########.fr       */
+/*   Created: 2022/08/03 15:26:58 by naal-jen          #+#    #+#             */
+/*   Updated: 2022/08/03 15:31:18 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 // #include <stdio.h>
-// #include <stdlib.h>
 
 int	ft_atoi(const char *nptr)
 {
