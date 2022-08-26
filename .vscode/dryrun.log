@@ -1,0 +1,53 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/loco/42_ft_printf'
+gcc -c -Wall -Wextra -Werror -I. src/ft_printf.c -o src/ft_printf.o
+gcc -c -Wall -Wextra -Werror -I. src/process_address_hex.c -o src/process_address_hex.o
+gcc -c -Wall -Wextra -Werror -I. src/process_char_string.c -o src/process_char_string.o
+gcc -c -Wall -Wextra -Werror -I. src/process_hash_flag.c -o src/process_hash_flag.o
+gcc -c -Wall -Wextra -Werror -I. src/process_int_unsigned.c -o src/process_int_unsigned.o
+gcc -c -Wall -Wextra -Werror -I. src/process_octal.c -o src/process_octal.o
+gcc -c -Wall -Wextra -Werror -I. src/process_width.c -o src/process_width.o
+gcc -c -Wall -Wextra -Werror -I. src/struct_initialize.c -o src/struct_initialize.o
+gcc -c -Wall -Wextra -Werror -I. src/process_hash.c -o src/process_hash.o
+make -C ./libft
+make[1]: Entering directory '/home/loco/42_ft_printf/libft'
+gcc -c -Wall -Wextra -Werror -I. ft_isalpha.c -o ft_isalpha.o
+gcc -c -Wall -Wextra -Werror -I. ft_isdigit.c -o ft_isdigit.o
+gcc -c -Wall -Wextra -Werror -I. ft_isalnum.c -o ft_isalnum.o
+gcc -c -Wall -Wextra -Werror -I. ft_isascii.c -o ft_isascii.o
+gcc -c -Wall -Wextra -Werror -I. ft_isprint.c -o ft_isprint.o
+gcc -c -Wall -Wextra -Werror -I. ft_strlen.c -o ft_strlen.o
+gcc -c -Wall -Wextra -Werror -I. ft_memset.c -o ft_memset.o
+gcc -c -Wall -Wextra -Werror -I. ft_bzero.c -o ft_bzero.o
+gcc -c -Wall -Wextra -Werror -I. ft_memcpy.c -o ft_memcpy.o
+gcc -c -Wall -Wextra -Werror -I. ft_memmove.c -o ft_memmove.o
+gcc -c -Wall -Wextra -Werror -I. ft_strlcpy.c -o ft_strlcpy.o
+gcc -c -Wall -Wextra -Werror -I. ft_strlcat.c -o ft_strlcat.o
+gcc -c -Wall -Wextra -Werror -I. ft_toupper.c -o ft_toupper.o
+gcc -c -Wall -Wextra -Werror -I. ft_tolower.c -o ft_tolower.o
+gcc -c -Wall -Wextra -Werror -I. ft_strchr.c -o ft_strchr.o
+gcc -c -Wall -Wextra -Werror -I. ft_strrchr.c -o ft_strrchr.o
+gcc -c -Wall -Wextra -Werror -I. ft_strncmp.c -o ft_strncmp.o
+gcc -c -Wall -Wextra -Werror -I. ft_memchr.c -o ft_memchr.o
+gcc -c -Wall -Wextra -Werror -I. ft_memcmp.c -o ft_memcmp.o
+gcc -c -Wall -Wextra -Werror -I. ft_strnstr.c -o ft_strnstr.o
+gcc -c -Wall -Wextra -Werror -I. ft_atoi.c -o ft_atoi.o
+gcc -c -Wall -Wextra -Werror -I. ft_calloc.c -o ft_calloc.o
+gcc -c -Wall -Wextra -Werror -I. ft_strdup.c -o ft_strdup.o
+gcc -c -Wall -Wextra -Werror -I. ft_substr.c -o ft_substr.o
+gcc -c -Wall -Wextra -Werror -I. ft_strjoin.c -o ft_strjoin.o
+gcc -c -Wall -Wextra -Werror -I. ft_strtrim.c -o ft_strtrim.o
+gcc -c -Wall -Wextra -Werror -I. ft_split.c -o ft_split.o
+gcc -c -Wall -Wextra -Werror -I. ft_itoa.c -o ft_itoa.o
+gcc -c -Wall -Wextra -Werror -I. ft_strmapi.c -o ft_strmapi.o
+gcc -c -Wall -Wextra -Werror -I. ft_striteri.c -o ft_striteri.o
+gcc -c -Wall -Wextra -Werror -I. ft_putchar_fd.c -o ft_putchar_fd.o
+gcc -c -Wall -Wextra -Werror -I. ft_putstr_fd.c -o ft_putstr_fd.o
+gcc -c -Wall -Wextra -Werror -I. ft_putendl_fd.c -o ft_putendl_fd.o
+gcc -c -Wall -Wextra -Werror -I. ft_putnbr_fd.c -o ft_putnbr_fd.o
+ar -rcs libft.a ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o
+make[1]: Leaving directory '/home/loco/42_ft_printf/libft'
+cp libft/libft.a libftprintf.a
+ar -rcs libftprintf.a src/ft_printf.o src/process_address_hex.o src/process_char_string.o src/process_hash_flag.o src/process_int_unsigned.o src/process_octal.o src/process_width.o src/struct_initialize.o src/process_hash.o
+make: Leaving directory '/home/loco/42_ft_printf'
+ 

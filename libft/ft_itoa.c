@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 15:35:13 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/08/09 09:25:37 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/08/26 17:43:30 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	count_digits(long int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long int n)
 {
 	char		*ptr;
 	int			i;

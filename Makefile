@@ -6,20 +6,20 @@
 #    By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 19:54:00 by naal-jen          #+#    #+#              #
-#    Updated: 2022/07/29 10:42:56 by naal-jen         ###   ########.fr        #
+#    Updated: 2022/08/25 18:27:47 by naal-jen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 INC = -I.
 AR = ar
 ARF = -rcs
 NAME = libftprintf.a
 
-MAN = src/ft_printf \
-		 src/handle_address \
-		 src/handle_d_i
+MAN = src/ft_printf src/process_address_hex src/process_char_string src/process_hash_flag \
+	src/process_int_unsigned src/process_octal src/process_width src/struct_initialize \
+	src/process_hash
 MANFC = $(addsuffix .c, $(MAN))
 MANO = $(MANFC:.c=.o)
 
