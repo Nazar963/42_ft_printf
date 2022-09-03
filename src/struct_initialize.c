@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:03:51 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/08/26 13:14:04 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:30:45 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ t_hint	*my_struct(void)
 	loco->count = 1;
 	loco->inc = 0;
 	loco->width = 0;
+	loco->widthx = 0;
 	loco->type[0] = 0;
 	loco->type[1] = 0;
+	loco->type[2] = 0;
 	loco->processed = 0;
 	return (loco);
 }

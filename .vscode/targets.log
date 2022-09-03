@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Aug 25 18:29:29 2022
+# Make data base, printed on Sat Sep  3 17:19:21 2022
 
 # Variables
 
@@ -64,16 +64,16 @@ MFLAGS = -pqrR
 MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
-# makefile (from 'Makefile', line 24)
+# makefile (from 'Makefile', line 25)
 MANO = $(MANFC:.c=.o)
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from 'Makefile', line 23)
+# makefile (from 'Makefile', line 24)
 MANFC = $(addsuffix .c, $(MAN))
 # automatic
 *F = $(notdir $*)
 # makefile (from 'Makefile', line 20)
-MAN = src/ft_printf src/process_address_hex src/process_char_string src/process_hash_flag src/process_int_unsigned src/process_octal src/process_width src/struct_initialize src/process_hash
+MAN = src/ft_printf src/process_address_hex src/process_char_string src/process_hash_flag src/process_int_unsigned src/process_octal src/process_width src/struct_initialize src/process_hash src/helper_address_hex src/helper_address src/hash_helper src/helper_char_string src/helper_int src/helper_width
 # makefile (from 'Makefile', line 17)
 ARF = -rcs
 # automatic
@@ -163,15 +163,15 @@ CC = gcc
 
 # Directories
 
-# src (device 2064, inode 138476): 5 files, no impossibilities so far.
+# src (device 2064, inode 138476): 6 files, no impossibilities so far.
 # . (device 2064, inode 135567): 9 files, no impossibilities.
 
-# 14 files, no impossibilities in 2 directories.
+# 15 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 %.o: %.c
-#  recipe to execute (from 'Makefile', line 35):
+#  recipe to execute (from 'Makefile', line 36):
 	@$(CC) -c $(CFLAGS) $(INC) $< -o $@
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -201,7 +201,7 @@ src/ft_printf.o: src/ft_printf.c
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=3/16=19%
-#  recipe to execute (from 'Makefile', line 35):
+#  recipe to execute (from 'Makefile', line 36):
 	@$(CC) -c $(CFLAGS) $(INC) $< -o $@
 
 # Not a target:
@@ -211,9 +211,15 @@ src/process_char_string.o:
 #  File has not been updated.
 
 # Not a target:
+src/helper_int.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 18:27:47.654005784
+#  Last modified 2022-09-03 17:19:15.647661856
 #  File has been updated.
 #  Successfully updated.
 
@@ -228,9 +234,27 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 38):
+#  recipe to execute (from 'Makefile', line 39):
 	$(MAKE) clean -C ./libft
 	@rm -f $(MANO)
+
+# Not a target:
+src/helper_char_string.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/helper_address.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/hash_helper.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
@@ -244,14 +268,20 @@ src/struct_initialize.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-libftprintf.a: src/ft_printf.o src/process_address_hex.o src/process_char_string.o src/process_hash_flag.o src/process_int_unsigned.o src/process_octal.o src/process_width.o src/struct_initialize.o src/process_hash.o
+# Not a target:
+src/helper_address_hex.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+libftprintf.a: src/ft_printf.o src/process_address_hex.o src/process_char_string.o src/process_hash_flag.o src/process_int_unsigned.o src/process_octal.o src/process_width.o src/struct_initialize.o src/process_hash.o src/helper_address_hex.o src/helper_address.o src/hash_helper.o src/helper_char_string.o src/helper_int.o src/helper_width.o
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/6=0%
-#  recipe to execute (from 'Makefile', line 30):
+#  recipe to execute (from 'Makefile', line 31):
 	$(MAKE) -C ./libft
 	cp libft/libft.a $(NAME)
 	$(AR) $(ARF) $@ $^
@@ -274,11 +304,10 @@ all: libftprintf.a
 
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
- 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 42):
+#  recipe to execute (from 'Makefile', line 43):
 	$(MAKE) fclean -C ./libft
 	@rm -f $(NAME)
 
@@ -312,6 +341,12 @@ src/process_hash_flag.o:
 #  File has not been updated.
 
 # Not a target:
+src/helper_width.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 src/process_hash.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -320,24 +355,25 @@ src/process_hash.o:
 # Not a target:
 src/ft_printf.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 18:27:31.004005775
+#  Last modified 2022-09-03 15:18:18.977657977
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=19/1024=2%, Rehash=0, Collisions=0/51=0%
+ 
+# Load=25/1024=2%, Rehash=0, Collisions=0/63=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 37 / storage = 470 B / avg = 12 B
-# current buf: size = 8162 B / used = 470 B / count = 37 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 44 / storage = 608 B / avg = 13 B
+# current buf: size = 8162 B / used = 608 B / count = 44 / avg = 13 B
 
-# strcache performance: lookups = 58 / hit rate = 36%
+# strcache performance: lookups = 65 / hit rate = 32%
 # hash-table stats:
-# Load=37/8192=0%, Rehash=0, Collisions=0/58=0%
-# Finished Make data base on Thu Aug 25 18:29:29 2022
+# Load=44/8192=1%, Rehash=0, Collisions=0/65=0%
+# Finished Make data base on Sat Sep  3 17:19:21 2022
 
  
