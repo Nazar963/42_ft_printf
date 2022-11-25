@@ -34,6 +34,7 @@ void	str_two(size_t num, char *string, t_hint *loco)
 		loco->widthx--;
 		loco->count++;
 	}
+	loco->widthx = num;
 }
 
 void	str_three(size_t num, char *string, t_hint *loco)
@@ -52,7 +53,10 @@ void	str_four(char *string, t_hint *loco)
 {
 	if (loco->type[0] != 'h')
 		loco->count += ft_strlen(string);
-	loco->width -= ft_strlen(string);
+	if (loco->widthx != 0)
+		loco->width -= loco->widthx;
+	else
+		loco->width -= ft_strlen(string);
 	if ((loco->type[0] == 'w' || loco->type[0] == '0') && loco->width > 0)
 	{
 		loco->count += loco->width;
@@ -64,6 +68,12 @@ void	str_four(char *string, t_hint *loco)
 	{
 		loco->count += loco->width;
 		ft_putstr_fd(string, 1);
+		while (loco->width--)
+			write(1, " ", 1);
+	}
+	else if ((loco->type[0] == 'h' || loco->type[2] == '.') && loco->width > 0)
+	{
+		loco->count += loco->width;
 		while (loco->width--)
 			write(1, " ", 1);
 	}

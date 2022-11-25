@@ -66,13 +66,13 @@ int	left_process(const char *str, t_hint *loco, int i)
 		width_three(str, loco, &i);
 	}
 	i++;
-	// if (str[i] == '.')
-	// {
-	// 	loco->widthx = loco->width;
-	// 	i = leading_process(str, loco, i);
-	// 	loco->width = loco->widthx;
-	// 	loco->type[0] = '-'; 
-	// }
+	if (str[i] == '.')
+	{
+		// loco->widthx = loco->width;
+		i = leading_process(str, loco, i);
+		// loco->width = loco->widthx;
+		// loco->type[0] = '-'; 
+	}
 	return (i);
 }
 
@@ -100,6 +100,30 @@ static int	me_dot(const char *str, t_hint *loco, int *i)
 	return (*i);
 }
 
+static int	me_dot_second(const char *str, t_hint *loco, int *i)
+{
+	loco->type[2] = '.';
+	if (ft_isdigit(str[*i + 2]) == 1)
+	{
+		(*i)++;
+		while (ft_isdigit(str[*i]) == 1)
+		{
+			loco->widthx += str[*i] - '0';
+			if (ft_isdigit(str[(*i) + 1]) == 1)
+				loco->widthx *= 10;
+			(*i)++;
+		}
+		(*i)--;
+	}
+	else if (ft_isdigit(str[*i + 1]) == 1)
+	{
+		(*i)++;
+		loco->widthx += str[*i] - '0';
+	}
+	(*i)++;
+	return (*i);
+}
+
 int	leading_process(const char *str, t_hint *loco, int i)
 {
 	if (str[i + 1] == '#')
@@ -109,7 +133,10 @@ int	leading_process(const char *str, t_hint *loco, int i)
 	}
 	if (str[i] == '.')
 	{
-		i = me_dot(str, loco, &i);
+		if (loco->type[0] == '-')
+			i = me_dot_second(str, loco, &i);
+		else
+			i = me_dot(str, loco, &i);
 		return (i);
 	}
 	if (str[i + 1] == '.' && ft_isdigit(str[i + 2]) == 0)
