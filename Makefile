@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 INC = -I.
 AR = ar
 ARF = -rcs
@@ -34,6 +34,9 @@ $(NAME): $(MANO)
 %.o: %.c
 	@$(CC) -c $(CFLAGS) $(INC) $< -o $@
 
+compile:
+	gcc $(MANO) libft/libft.a
+
 clean:
 	$(MAKE) clean -C ./libft
 	@rm -f $(MANO)
@@ -43,5 +46,7 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+bonus: all
 
 .PHONY: all clean fclean re

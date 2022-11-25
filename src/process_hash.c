@@ -28,6 +28,12 @@ int	me_space(const char *str, t_hint *loco, int i)
 		while (str[i] != 'i')
 			i++;
 	}
+	while (ft_isdigit(str[i]) == 1)
+	{
+		i++;
+	}
+	if (str[i] == 's')
+		fail();
 	return (i);
 }
 

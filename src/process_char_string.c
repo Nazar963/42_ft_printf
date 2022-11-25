@@ -67,6 +67,8 @@ static void	me_dot_stringo(char *string, t_hint *loco)
 
 void	stringo(char *string, t_hint *loco)
 {
+	if (loco->type[0] == ' ')
+		return ;
 	if (loco->type[0] == 'd' && loco->width == 0)
 	{
 		string = 0;
@@ -86,6 +88,8 @@ void	stringo(char *string, t_hint *loco)
 	{
 		if (loco->type[0] == '.' && loco->width <= 5 && loco->width > 0)
 			return ;
+		else if (loco->type[0] == '.')
+			exit(0);
 		else
 			string = "(null)";
 	}

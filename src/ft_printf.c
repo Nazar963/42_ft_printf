@@ -97,3 +97,26 @@ int	ft_printf(const char *str, ...)
 	free(i);
 	return (result);
 }
+
+int	main(void)
+{
+	// printf("%3.7s%7.7s|", "hello", "world");
+	// printf("\n");
+	// ft_printf("%3.7s%7.7s|", "hello", "world");
+	// printf("\n");
+
+	// printf("%-7.5s|", "yolo");
+	// printf("\n");
+	// ft_printf("%-7.5s|", "yolo");
+	// printf("\n");
+
+	printf("%-7.5s", "tubular");
+	printf("\n");
+	ft_printf("%-7.5s", "tubular");
+	printf("\n");
+
+	// printf("%-s", NULL);
+	// printf("\n");
+	// ft_printf("%-s", NULL);
+	// printf("\n");
+}

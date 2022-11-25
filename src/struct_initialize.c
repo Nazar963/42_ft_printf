@@ -41,3 +41,8 @@ int	*new_i(void)
 	*i = 0;
 	return (i);
 }
+
+void	fail()
+{
+	exit(0);
+}

@@ -60,9 +60,19 @@ int	left_process(const char *str, t_hint *loco, int i)
 			i++;
 		}
 	}
+	if (ft_isdigit(str[i + 1]) == 1)
+	{
+		i++;
+		width_three(str, loco, &i);
+	}
 	i++;
-	width_three(str, loco, &i);
-	i++;
+	// if (str[i] == '.')
+	// {
+	// 	loco->widthx = loco->width;
+	// 	i = leading_process(str, loco, i);
+	// 	loco->width = loco->widthx;
+	// 	loco->type[0] = '-'; 
+	// }
 	return (i);
 }
 

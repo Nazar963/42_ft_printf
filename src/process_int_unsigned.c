@@ -107,7 +107,7 @@ void	number(long int n, t_hint *loco)
 		me_dot_number(loco);
 	if (loco->type[0] == 'a')
 		return ;
-	if (loco->width > 0 && loco->width > count_digits(n))
+	if (loco->width > 0 && loco->width >= count_digits(n))
 		int_helper_four(n, count_digits(n), loco);
 	else
 		loco->width = 0;

@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include	<stdint.h>// uintptr_t 
+# include	<stdio.h>
 # include	<unistd.h>// write
 # include	<stdlib.h>// malloc free
 # include	<stdarg.h>// va_start va_arg va_copy va_end va_list
@@ -78,4 +79,6 @@ void		width_two(const char *str, t_hint *loco, int *i);
 void		width_three(const char *str, t_hint *loco, int *i);
 void		width_four(const char *str, t_hint *loco, int *i);
 void		width_five(const char *str, t_hint *loco, int *i);
+void		fail();
+
 #endif

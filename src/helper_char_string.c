@@ -21,7 +21,7 @@ void	str_one(size_t wido, char *string, t_hint *loco)
 	else
 		loco->width -= ft_strlen(string);
 	loco->count += loco->width;
-	while (loco->width--)
+	while ((loco->width--) && loco->width >= 0)
 		write(1, " ", 1);
 }
 
