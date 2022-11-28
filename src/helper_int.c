@@ -37,6 +37,11 @@ void	int_helper(long int n, t_hint *loco)
 				write(1, "0", 1);
 		}
 	}
+	else if (loco->type[0] == 'w' && loco->widthx > 0)
+	{
+		while (loco->widthx--)
+			write(1, "0", 1);
+	}
 	else
 		while (loco->width--)
 			write(1, "0", 1);
@@ -83,7 +88,14 @@ void	int_helper_three(long int n, t_hint *loco)
 
 void	int_helper_four(long int n, int num, t_hint *loco)
 {
-	if (n < 0)
+	// if (loco->type[2] == '.' && loco->widthx > 0)
+	// {
+	// 	loco->width -= 2;
+	// 	// loco->width = (loco->width - num) - (loco->widthx - num);
+	// }
+	if (loco->type[2] == '.')
+		loco->width = (loco->width - num) - (loco->widthx - num);
+	else if (n < 0)
 		loco->width -= num - 1;
 	else
 		loco->width -= num;

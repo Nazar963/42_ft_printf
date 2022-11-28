@@ -71,6 +71,11 @@ static void	process_number_flag(t_hint *loco, long int n)
 	}
 	else if ((loco->type[0] == '0' || loco->type[0] == '.') && loco->width > 0)
 		int_helper(n, loco);
+	if (loco->type[2] == '.' && loco->widthx > 0)
+	{
+		loco->widthx -= count_digits(n);
+		int_helper(n, loco);
+	}
 }
 
 void	number_unsigned(unsigned n, t_hint *loco)

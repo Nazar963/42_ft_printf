@@ -36,6 +36,8 @@ int	width_process(const char *str, t_hint *loco, int i)
 	else if (str[i] == '.' && ft_isdigit(str[i + 1]) == 0)
 	{
 		loco->type[0] = 'd';
+		if (str[i + 1] == 's')
+			loco->widthx = loco->width;
 		loco->width = 0;
 		i++;
 	}
@@ -120,6 +122,8 @@ static int	me_dot_second(const char *str, t_hint *loco, int *i)
 		(*i)++;
 		loco->widthx += str[*i] - '0';
 	}
+	else
+		loco->type[1] = 'o';
 	(*i)++;
 	return (*i);
 }

@@ -45,7 +45,7 @@ static void	me_dot_stringo(char *string, t_hint *loco)
 
 	num = 0;
 	wido = 0;
-	if (loco->width == 0)
+	if (loco->width == 0 && loco->widthx == 0) // modified the second con
 	{
 		loco->type[0] = 'a';
 		return ;
@@ -60,6 +60,11 @@ static void	me_dot_stringo(char *string, t_hint *loco)
 			str_two(num, string, loco);
 			loco->type[0] = 'h';
 		}
+		else if (loco->widthx == 0 && loco->type[1] == 'o')
+		{
+			loco->type[0] = 'h';
+			loco->type[2] = '.';
+		}
 		else
 			str_three(num, string, loco);
 	}
@@ -71,6 +76,11 @@ void	stringo(char *string, t_hint *loco)
 		return ;
 	if (loco->type[0] == 'd' && loco->width == 0)
 	{
+		if (loco->widthx > 0)
+		{
+			while (--loco->widthx)
+				ft_putchar_fd(' ', 1);
+		}
 		string = 0;
 		string = (char *)malloc(3 * sizeof(*string));
 		string[0] = ' ';
@@ -86,10 +96,35 @@ void	stringo(char *string, t_hint *loco)
 		return ;
 	if (string == NULL)
 	{
+		if (loco->type[0] == '.' || loco->type[2] == '.')
+		{
+			string = "(null)";
+			me_dot_stringo(string, loco);
+		}
+		if (loco->type[0] == 'a')
+			return ;
 		if (loco->type[0] == '.' && loco->width <= 5 && loco->width > 0)
 			return ;
-		else if (loco->type[0] == '.')
+		else if (loco->type[0] == '.' && loco->width == 0)
 			exit(0);
+		else if (loco->type[2] == '.' && loco->type[1] == 'o')
+		{
+			while (loco->width--)
+				ft_putchar_fd(' ', 1);
+			return ;
+		}
+		else if (loco->type[2] == '.' && loco->type[0] == 'w' && loco->widthx)
+		{
+			while (loco->width--)
+				ft_putchar_fd(' ', 1);
+			return ;
+		}
+		else if (loco->type[2] == '.' && loco->type[0] == '-')
+		{
+			while (loco->width--)
+				ft_putchar_fd(' ', 1);
+			return ;
+		}
 		else
 			string = "(null)";
 	}

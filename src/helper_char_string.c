@@ -55,6 +55,8 @@ void	str_four(char *string, t_hint *loco)
 		loco->count += ft_strlen(string);
 	if (loco->widthx != 0)
 		loco->width -= loco->widthx;
+	else if (loco->type[0] == 'h' && loco->type[2] == '.')
+		loco->width = loco->width;
 	else
 		loco->width -= ft_strlen(string);
 	if ((loco->type[0] == 'w' || loco->type[0] == '0') && loco->width > 0)
@@ -71,7 +73,7 @@ void	str_four(char *string, t_hint *loco)
 		while (loco->width--)
 			write(1, " ", 1);
 	}
-	else if ((loco->type[0] == 'h' || loco->type[2] == '.') && loco->width > 0)
+	else if ((loco->type[0] == 'h' && loco->type[2] == '.') && loco->width > 0)
 	{
 		loco->count += loco->width;
 		while (loco->width--)

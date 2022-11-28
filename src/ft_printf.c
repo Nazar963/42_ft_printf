@@ -12,6 +12,7 @@
 
 #include "../libft/libft.h"
 #include "../include/ft_printf.h"
+#include <limits.h>
 
 static int	*proc(const char *str, va_list args, t_hint *loco, int *i)
 {
@@ -71,6 +72,7 @@ static void	general_process(const char *str, int *i, va_list args, t_hint *loco)
 			if (loco->type[1] == 'n')
 				return ;
 			loco->width = 0;
+			loco->widthx = 0;
 			loco->type[0] = 0;
 			if (str[*i] == '\0')
 				return ;
@@ -100,23 +102,26 @@ int	ft_printf(const char *str, ...)
 
 // int	main(void)
 // {
-// 	// printf("%3.7s%7.7s|", "hello", "world");
+// 	// printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 // 	// printf("\n");
-// 	// ft_printf("%3.7s%7.7s|", "hello", "world");
-// 	// printf("\n");
-
-// 	// printf("%-7.5s|", "yolo");
-// 	// printf("\n");
-// 	// ft_printf("%-7.5s|", "yolo");
+// 	// ft_printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 // 	// printf("\n");
 
-// 	printf("%-7.5s|", "tubular");
+// 	// printf(" %.1s|", "");
+// 	// printf("\n");
+// 	// ft_printf(" %.1s|", "");
+// 	// printf("\n");
+
+// 	// // s_hidden = "hi low\0don't print me lol\0"
+
+// 	printf("%.s", NULL);
 // 	printf("\n");
-// 	ft_printf("%-7.5s|", "tubular");
+// 	ft_printf("%.s", NULL);
 // 	printf("\n");
-
-// 	// printf("%-s", NULL);
 // 	// printf("\n");
-// 	// ft_printf("%-s", NULL);
+
+// 	// printf("%3.1s", NULL);
+// 	// printf("\n");
+// 	// ft_printf("%3.1s", NULL);
 // 	// printf("\n");
 // }
