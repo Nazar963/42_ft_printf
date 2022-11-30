@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:26:05 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/09/03 17:17:20 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:39:56 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,21 @@ void	str_three(size_t num, char *string, t_hint *loco)
 
 void	str_four(char *string, t_hint *loco)
 {
-	if (loco->type[0] != 'h')
+	if (loco->type[0] != 'h' && string != NULL)
 		loco->count += ft_strlen(string);
 	if (loco->widthx != 0)
 		loco->width -= loco->widthx;
 	else if (loco->type[0] == 'h' && loco->type[2] == '.')
 		loco->width = loco->width;
-	else
+	else if (loco->type[2] != 'a')
 		loco->width -= ft_strlen(string);
-	if ((loco->type[0] == 'w' || loco->type[0] == '0') && loco->width > 0)
+	if (loco->type[0] == 'w' && loco->width > 0 && string == NULL)
+	{
+		loco->count += loco->width;
+		while (loco->width--)
+			write(1, " ", 1);
+	}
+	else if ((loco->type[0] == 'w' || loco->type[0] == '0') && loco->width > 0)
 	{
 		loco->count += loco->width;
 		while (loco->width--)

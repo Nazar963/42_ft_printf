@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:05:15 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/09/03 21:15:57 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:24:30 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,37 +91,59 @@ int	ft_printf(const char *str, ...)
 	result = 0;
 	loco = my_struct();
 	va_start(args, str);
+	va_copy(loco->args2, args);
 	i = new_i();
 	general_process(str, i, args, loco);
 	result = loco->count - 1;
 	va_end(args);
+	va_end(loco->args2);
 	free(loco);
 	free(i);
 	return (result);
 }
 
-// int	main(void)
-// {
-// 	// printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-// 	// printf("\n");
-// 	// ft_printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-// 	// printf("\n");
+int	main(void)
+{
+// // 	// // s_hidden = "hi low\0don't print me lol\0"
 
-// 	// printf(" %.1s|", "");
-// 	// printf("\n");
-// 	// ft_printf(" %.1s|", "");
-// 	// printf("\n");
+	printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("\n");
+	ft_printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("\n");
+	printf("\n");
 
-// 	// // s_hidden = "hi low\0don't print me lol\0"
+	printf("%-16s|", NULL);
+	printf("\n");
+	ft_printf("%-16s|", NULL);
+	printf("\n");
+	printf("\n");
 
-// 	printf("%.s", NULL);
-// 	printf("\n");
-// 	ft_printf("%.s", NULL);
-// 	printf("\n");
-// 	// printf("\n");
+	printf("%-32s|", NULL);
+	printf("\n");
+	ft_printf("%-32s|", NULL);
+	printf("\n");
+	printf("\n");
 
-// 	// printf("%3.1s", NULL);
-// 	// printf("\n");
-// 	// ft_printf("%3.1s", NULL);
-// 	// printf("\n");
-// }
+	printf("%2s", NULL);
+	printf("\n");
+	ft_printf("%2s", NULL);
+	printf("\n");
+	printf("\n");
+	
+	printf("%-s", NULL);
+	printf("\n");
+	ft_printf("%-s", NULL);
+	printf("\n");
+	printf("\n");
+
+	printf("%s", NULL);
+	printf("\n");
+	ft_printf("%s", NULL);
+	printf("\n");
+	printf("\n");
+
+	printf("hello, %s.", NULL);
+	printf("\n");
+	ft_printf("hello, %s.", NULL);
+	printf("\n");
+}

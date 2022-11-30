@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:51:32 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/09/03 21:10:46 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/11/30 12:43:51 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_hint
 	int		inc;
 	int		processed;
 	int		arg;
+	va_list	args2;
 }		t_hint;
 
 int			ft_printf(const char *str, ...);
@@ -80,5 +81,6 @@ void		width_three(const char *str, t_hint *loco, int *i);
 void		width_four(const char *str, t_hint *loco, int *i);
 void		width_five(const char *str, t_hint *loco, int *i);
 void		fail();
+void		handle_string_null(char *string, t_hint *loco);
 
 #endif

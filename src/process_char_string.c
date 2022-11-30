@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 10:37:42 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/09/03 15:35:18 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:40:04 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,17 @@ void	stringo(char *string, t_hint *loco)
 		me_dot_stringo(string, loco);
 	if (loco->type[0] == 'a')
 		return ;
-	if (string == NULL)
+	if (string == NULL && loco->type[2] != 'a')
 	{
+		handle_string_null(string, loco);
+		if (loco->type[1] != '1')
+			return ;
 		if (loco->type[0] == '.' || loco->type[2] == '.')
 		{
 			string = "(null)";
 			me_dot_stringo(string, loco);
 		}
-		if (loco->type[0] == 'a')
+		if (loco->type[0] == 'a' || loco->type[2] == 'a')
 			return ;
 		if (loco->type[0] == '.' && loco->width <= 5 && loco->width > 0)
 			return ;

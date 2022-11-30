@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:07:57 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/09/03 21:09:17 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:12:47 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,19 @@ int	left_process(const char *str, t_hint *loco, int i)
 static int	me_dot(const char *str, t_hint *loco, int *i)
 {
 	loco->type[0] = '.';
+	if (str[*i + 1] == '0' && va_arg(loco->args2, char *) == NULL)
+	{
+		(*i)++;
+		if (ft_isdigit(str[*i + 1]) == 1)
+			(*i)++;
+		loco->width += str[*i] - '0';
+		if (loco->width < 6)
+			loco->width = 0;
+		// while (ft_isdigit(str[*i + 1]) == 1)
+		// 	(*i)++;
+		(*i)++;
+		return (*i);
+	}
 	if (ft_isdigit(str[*i + 2]) == 1)
 	{
 		(*i)++;

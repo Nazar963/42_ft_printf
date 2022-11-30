@@ -26,6 +26,7 @@
                 "../libft/ft_strdup.c",
                 "../libft/ft_itoa.c",
                 "../libft/ft_isdigit.c",
+                "../libft/ft_strnstr.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
