@@ -65,6 +65,11 @@ static void	me_dot_stringo(char *string, t_hint *loco)
 			loco->type[0] = 'h';
 			loco->type[2] = '.';
 		}
+		else if (loco->type[2] == '.' && loco->widthx == 0)
+		{
+			loco->type[1] = 'j';
+			return ;
+		}
 		else
 			str_three(num, string, loco);
 	}
@@ -97,10 +102,23 @@ void	stringo(char *string, t_hint *loco)
 	if (string == NULL && loco->type[2] != 'a')
 	{
 		handle_string_null(string, loco);
-		if (loco->type[1] != '1')
+		if (loco->type[1] == '1')
 			return ;
-		if (loco->type[0] == '.' || loco->type[2] == '.')
+		if (loco->type[0] == '.')
 		{
+			if (loco->width < 5 && loco->width > 0)
+			{
+				return ;
+			}
+			string = "(null)";
+			me_dot_stringo(string, loco);
+		}
+		if (loco->type[2] == '.')
+		{
+			if (loco->widthx < 5 && loco->widthx > 0)
+			{
+				return ;
+			}
 			string = "(null)";
 			me_dot_stringo(string, loco);
 		}

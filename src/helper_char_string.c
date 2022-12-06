@@ -51,6 +51,15 @@ void	str_three(size_t num, char *string, t_hint *loco)
 
 void	str_four(char *string, t_hint *loco)
 {
+	if (loco->type[1] == 'j')
+	{
+		while (loco->width--)
+		{
+			loco->count++;
+			write(1, " ", 1);
+		}
+		return ;
+	}
 	if (loco->type[0] != 'h' && string != NULL)
 		loco->count += ft_strlen(string);
 	if (loco->widthx != 0)

@@ -82,5 +82,6 @@ void		width_four(const char *str, t_hint *loco, int *i);
 void		width_five(const char *str, t_hint *loco, int *i);
 void		fail();
 void		handle_string_null(char *string, t_hint *loco);
+int			count_digits(long int n);
 
 #endif

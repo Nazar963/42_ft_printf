@@ -15,11 +15,25 @@
 
 void	handle_string_null(char *string, t_hint *loco)
 {
-	loco->type[1] = '1';
-	if (loco->type[0] == '-' && loco->width > 0 && loco->type[2] == '.')
+	if (loco->type[0] == '-' && loco->width > 0 && loco->type[2] == '.' && loco->widthx < 6)
 	{
+		loco->type[1] = '1';
 		loco->count += loco->width;
 		while (loco->width--)
 			write(1, " ", 1);
+	}
+	else if (loco->type[0] == '-' && loco->width > 0 && loco->type[2] == '.' && loco->widthx >= 6)
+	{
+		string = "(null)";
+		loco->type[1] = '1';
+		loco->count += ft_strlen(string);
+		loco->width -= ft_strlen(string);
+		ft_putstr_fd(string, 1);
+		if (loco->width > 0)
+		{
+			loco->count += loco->width;
+			while (loco->width--)
+				write(1, " ", 1);
+		}
 	}
 }

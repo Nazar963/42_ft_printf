@@ -13,7 +13,7 @@
 #include "../libft/libft.h"
 #include "../include/ft_printf.h"
 
-static int	count_digits(long int n)
+int	count_digits(long int n)
 {
 	int	i;
 
@@ -58,24 +58,25 @@ static void	process_number_flag(t_hint *loco, long int n)
 	{
 		if (n < 0)
 		{
-			loco->width--;
-			loco->count--;
 			while (loco->width--)
+			{
+				loco->count++;
 				write(1, " ", 1);
+			}
 		}
 		else
 		{
 			while (loco->width--)
+			{
+				loco->count++;
 				write(1, " ", 1);
+			}
 		}
 	}
 	else if ((loco->type[0] == '0' || loco->type[0] == '.') && loco->width > 0)
 		int_helper(n, loco);
 	if (loco->type[2] == '.' && loco->widthx > 0)
-	{
-		loco->widthx -= count_digits(n);
 		int_helper(n, loco);
-	}
 }
 
 void	number_unsigned(unsigned n, t_hint *loco)
@@ -88,16 +89,26 @@ void	number_unsigned(unsigned n, t_hint *loco)
 	if (loco->type[0] == 'a')
 		return ;
 	if (loco->width > 0 && loco->width > count_digits(n))
-		loco->width -= count_digits(n);
+		int_helper_four(n, count_digits(n), loco);
 	else
+	{
 		loco->width = 0;
-	loco->count += loco->width + loco->widthx;
+		if (loco->widthx > 0 && n > 0)
+			loco->widthx -= count_digits(n);
+		else if (loco->widthx > 0 && n < 0)
+			loco->widthx -= count_digits(n) - 1;
+		if (loco->widthx < 0)
+			loco->widthx = 0;
+	}
 	if (loco->type[2] == '+')
 		loco->type[2] = 0;
 	process_number_flag(loco, n);
 	string = ft_itoa_mod(n);
-	loco->count += ft_strlen(string);
-	ft_putstr_fd(string, 1);
+	if (loco->type[1] != 'y')
+	{
+		loco->count += ft_strlen(string);
+		ft_putstr_fd(string, 1);
+	}
 	if (((loco->type[0] == '-') || (loco->type[1] == '-'))
 		&& ((loco->width > 0) || (loco->widthx > 0)))
 		int_helper_one(loco);
@@ -115,16 +126,26 @@ void	number(long int n, t_hint *loco)
 	if (loco->width > 0 && loco->width >= count_digits(n))
 		int_helper_four(n, count_digits(n), loco);
 	else
+	{
 		loco->width = 0;
-	loco->count += loco->width + loco->widthx;
+		if (loco->widthx > 0 && n > 0)
+			loco->widthx -= count_digits(n);
+		else if (loco->widthx > 0 && n < 0)
+			loco->widthx -= count_digits(n) - 1;
+		if (loco->widthx < 0)
+			loco->widthx = 0;
+	}
 	process_number_flag(loco, n);
 	int_helper_five(n, loco);
-	if ((loco->type[0] == '0' || loco->type[0] == '.')
-		&& n < 0 && loco->width == -1)
+	if ((loco->type[0] == '0' || loco->type[0] == '.' || loco->type[2] == '.')
+		&& n < 0 && (loco->width == -1 || loco->widthx == -1) && loco->type[1] != '_')
 		n *= -1;
 	string = ft_itoa(n);
-	loco->count += ft_strlen(string);
-	ft_putstr_fd(string, 1);
+	if (loco->type[1] != 'y')
+	{
+		loco->count += ft_strlen(string);
+		ft_putstr_fd(string, 1);
+	}
 	if (((loco->type[0] == '-') || (loco->type[1] == '-'))
 		&& ((loco->width > 0) || (loco->widthx > 0)))
 		int_helper_three(n, loco);

@@ -33,15 +33,32 @@ void	hex(t_hint *loco)
 {
 	if (loco->type[0] == 'w' && loco->width > 0)
 	{
+
 		while (loco->width--)
 		{
 			write(1, " ", 1);
 			loco->count++;
 		}
 	}
-	else if ((loco->type[0] == '0' || loco->type[0] == '.') && loco->width > 0)
+	else if ((loco->type[0] == '0' || loco->type[0] == '.') && loco->width > 0 && loco->type[2] != '.')
 	{
 		while (loco->width--)
+		{
+			write(1, "0", 1);
+			loco->count++;
+		}
+	}
+	else if (loco->type[0] == '0' && loco->width > 0 && loco->type[2] == '.')
+	{
+		while (loco->width--)
+		{
+			write(1, " ", 1);
+			loco->count++;
+		}
+	}
+	if (loco->type[2] == '.' && loco->widthx > 0)
+	{
+		while (loco->widthx--)
 		{
 			write(1, "0", 1);
 			loco->count++;
@@ -92,13 +109,32 @@ void	ifhex(unsigned int number, char cha, t_hint *loco)
 		return ;
 	}
 	if (loco->width > 0 && loco->width > length)
-		loco->width -= length;
+	{
+		if (loco->widthx > length)
+			loco->width -= loco->widthx;
+		else
+			loco->width -= length;
+	}
 	else
 		loco->width = 0;
+	if (loco->widthx > 0)
+	{
+		loco->widthx -= length;
+		if (loco->widthx < 0)
+			loco->widthx = 0;
+	}
+	else if (loco->type[2] == '.' && loco->widthx == 0 && loco->type[1] != 'n' && va_arg(loco->args2, int) == 0)
+	{
+		loco->type[1] = 'y';
+		loco->width++;
+	}
 	ifhex_t(number, string, length, cha);
-	loco->count += ft_strlen(string);
 	ifhex_helper(cha, loco);
-	ft_putstr_fd(string, 1);
+	if (loco->type[1] != 'y')
+	{
+		loco->count += ft_strlen(string);
+		ft_putstr_fd(string, 1);
+	}
 	free(string);
 	ifhex_helper_two(loco);
 }

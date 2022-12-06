@@ -31,14 +31,24 @@ int	width_process(const char *str, t_hint *loco, int i)
 	else
 		loco->width += str[i] - '0';
 	i++;
-	if ((str[i] == '.' || str[i] == '-') && ft_isdigit(str[i + 1]) == 1)
+	if ((str[i] == '.' || str[i] == '-') && ft_isdigit(str[i + 1]))
 		width_two(str, loco, &i);
-	else if (str[i] == '.' && ft_isdigit(str[i + 1]) == 0)
+	else if (str[i] == '.' && ft_isdigit(str[i + 1]) == 0 && str[i + 1] == 's')
 	{
 		loco->type[0] = 'd';
 		if (str[i + 1] == 's')
 			loco->widthx = loco->width;
 		loco->width = 0;
+		i++;
+	}
+	else if (str[i] == '.' && (str[i + 1] == 'x' || str[i + 1] == 'X') && va_arg(loco->args2, int) != 0)
+	{
+		loco->type[1] = 'n';
+		i++;
+	}
+	else if (str[i] == '.' && ft_isdigit(str[i + 1]) == 0)
+	{
+		loco->type[2] = '.';
 		i++;
 	}
 	return (i);
@@ -47,6 +57,12 @@ int	width_process(const char *str, t_hint *loco, int i)
 int	left_process(const char *str, t_hint *loco, int i)
 {
 	loco->type[0] = '-';
+	if (str[i + 1] == '-')
+	{
+		while (str[i] == '-')
+			i++;
+		i--;	
+	}
 	if (str[i + 1] == '#')
 	{
 		if (str [i + 2] == '.')
@@ -164,6 +180,11 @@ int	leading_process(const char *str, t_hint *loco, int i)
 	width_four(str, loco, &i);
 	if ((str[i] == '.') && ft_isdigit(str[i + 1]) == 1)
 		width_five(str, loco, &i);
+	else if ((str[i] == '.') && ft_isdigit(str[i + 1]) == 0)
+	{
+		loco->type[2] = '.';
+		i++;
+	}
 	else if (str[i] == '-')
 		i = left_process(str, loco, i);
 	return (i);
