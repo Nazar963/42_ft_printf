@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:26:05 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/11/30 17:39:56 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:53:12 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,33 @@ void	str_three(size_t num, char *string, t_hint *loco)
 	loco->type[0] = 'h';
 }
 
+void	str_five(char *string, t_hint *loco)
+{
+	if (loco->type[0] == 'w' && loco->width > 0 && string == NULL)
+	{
+		loco->count += loco->width;
+		while (loco->width--)
+			write(1, " ", 1);
+	}
+	else if ((loco->type[0] == 'w' || loco->type[0] == '0') && loco->width > 0)
+		str_six(string, loco);
+	else if (loco->type[0] == '-' && loco->width > 0)
+	{
+		loco->count += loco->width;
+		ft_putstr_fd(string, 1);
+		while (loco->width--)
+			write(1, " ", 1);
+	}
+	else if ((loco->type[0] == 'h' && loco->type[2] == '.') && loco->width > 0)
+	{
+		loco->count += loco->width;
+		while (loco->width--)
+			write(1, " ", 1);
+	}
+	else if (loco->type[0] != 'h')
+		ft_putstr_fd(string, 1);
+}
+
 void	str_four(char *string, t_hint *loco)
 {
 	if (loco->type[1] == 'j')
@@ -68,32 +95,5 @@ void	str_four(char *string, t_hint *loco)
 		loco->width = loco->width;
 	else if (loco->type[2] != 'a')
 		loco->width -= ft_strlen(string);
-	if (loco->type[0] == 'w' && loco->width > 0 && string == NULL)
-	{
-		loco->count += loco->width;
-		while (loco->width--)
-			write(1, " ", 1);
-	}
-	else if ((loco->type[0] == 'w' || loco->type[0] == '0') && loco->width > 0)
-	{
-		loco->count += loco->width;
-		while (loco->width--)
-			write(1, " ", 1);
-		ft_putstr_fd(string, 1);
-	}
-	else if (loco->type[0] == '-' && loco->width > 0)
-	{
-		loco->count += loco->width;
-		ft_putstr_fd(string, 1);
-		while (loco->width--)
-			write(1, " ", 1);
-	}
-	else if ((loco->type[0] == 'h' && loco->type[2] == '.') && loco->width > 0)
-	{
-		loco->count += loco->width;
-		while (loco->width--)
-			write(1, " ", 1);
-	}
-	else if (loco->type[0] != 'h')
-		ft_putstr_fd(string, 1);
+	str_five(string, loco);
 }

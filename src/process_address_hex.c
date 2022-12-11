@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 11:50:40 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/09/03 21:14:45 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:44:54 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,24 @@ void	hex(t_hint *loco)
 {
 	if (loco->type[0] == 'w' && loco->width > 0)
 	{
-
-		while (loco->width--)
-		{
+		while (loco->width-- && loco->count++)
 			write(1, " ", 1);
-			loco->count++;
-		}
 	}
-	else if ((loco->type[0] == '0' || loco->type[0] == '.') && loco->width > 0 && loco->type[2] != '.')
+	else if ((loco->type[0] == '0' || loco->type[0] == '.')
+		&& loco->width > 0 && loco->type[2] != '.')
 	{
-		while (loco->width--)
-		{
+		while (loco->width-- && loco->count++)
 			write(1, "0", 1);
-			loco->count++;
-		}
 	}
 	else if (loco->type[0] == '0' && loco->width > 0 && loco->type[2] == '.')
 	{
-		while (loco->width--)
-		{
+		while (loco->width-- && loco->count++)
 			write(1, " ", 1);
-			loco->count++;
-		}
 	}
 	if (loco->type[2] == '.' && loco->widthx > 0)
 	{
-		while (loco->widthx--)
-		{
+		while (loco->widthx-- && loco->count++)
 			write(1, "0", 1);
-			loco->count++;
-		}
 	}
 }
 
@@ -108,26 +96,7 @@ void	ifhex(unsigned int number, char cha, t_hint *loco)
 		free (string);
 		return ;
 	}
-	if (loco->width > 0 && loco->width > length)
-	{
-		if (loco->widthx > length)
-			loco->width -= loco->widthx;
-		else
-			loco->width -= length;
-	}
-	else
-		loco->width = 0;
-	if (loco->widthx > 0)
-	{
-		loco->widthx -= length;
-		if (loco->widthx < 0)
-			loco->widthx = 0;
-	}
-	else if (loco->type[2] == '.' && loco->widthx == 0 && loco->type[1] != 'n' && va_arg(loco->args2, int) == 0)
-	{
-		loco->type[1] = 'y';
-		loco->width++;
-	}
+	ifhex_1(number, length, loco);
 	ifhex_t(number, string, length, cha);
 	ifhex_helper(cha, loco);
 	if (loco->type[1] != 'y')

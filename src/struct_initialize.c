@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:03:51 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/11/29 12:27:48 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:36:20 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	*new_i(void)
 	return (i);
 }
 
-void	fail()
+void	fail(void)
 {
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:18:53 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/11/29 20:27:02 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/12/07 11:02:19 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,15 @@ void	width_one(const char *str, t_hint *loco, int *i)
 
 void	width_two(const char *str, t_hint *loco, int *i)
 {
-	if (str[(*i) + 1] == '0' && (str[(*i) + 2] == 'x' || str[(*i) + 2] == 'X') && va_arg(loco->args2, int) != 0)
+	if (str[(*i) + 1] == '0' && (str[(*i) + 2] == 'x' || str[(*i) + 2] == 'X')
+		&& va_arg(loco->args2, int) != 0)
 	{
 		loco->type[1] = 'n';
 		(*i)++;
 		(*i)++;
 	}
 	else if (ft_isdigit(str[(*i) + 1]) == 1)
-	{
-		loco->type[2] = '.';
-		(*i)++;
-		while (ft_isdigit(str[(*i)]) == 1)
-		{
-			loco->widthx += str[(*i)] - '0';
-			if (ft_isdigit(str[(*i) + 1]) == 1)
-				loco->widthx *= 10;
-			(*i)++;
-		}
-		if (va_arg(loco->args2, char *) == NULL && str[(*i)] == 's')
-		{
-			if (loco->widthx < 6)
-			{
-				loco->widthx = 0;
-				loco->type[2] = 'a';
-			}
-		}
-	}
+		width_six(str, loco, i);
 	else
 	{
 		(*i)++;
@@ -118,26 +101,7 @@ void	width_five(const char *str, t_hint *loco, int *i)
 		(*i)++;
 	}
 	else
-	{
-		loco->type[2] = '.';
-		if (ft_isdigit(str[(*i) + 2]) == 1)
-		{
-			(*i)++;
-			while (ft_isdigit(str[(*i)]) == 1)
-			{
-				loco->widthx += str[(*i)] - '0';
-				if (ft_isdigit(str[(*i) + 1]) == 1)
-					loco->widthx *= 10;
-				(*i)++;
-			}
-			(*i)--;
-		}
-		else if (ft_isdigit(str[(*i) + 1]) == 1)
-		{
-			(*i)++;
-			loco->widthx += str[(*i)] - '0';
-		}
-	}
+		width_seven(str, loco, i);
 	(*i)++;
 	while (ft_isdigit(str[(*i)]) == 1)
 		(*i)++;

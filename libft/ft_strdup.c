@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // ft_stlen
-#include <stdlib.h> // malloc
-//#include <stdio.h> // printf for testing
-//#include <string.h> // strdup for testing
+#include "libft.h"
+#include <stdlib.h>
+//#include <stdio.h>
+//#include <string.h>
 
 char	*ft_strdup(const char *s)
 {

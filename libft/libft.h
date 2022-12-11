@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:58:14 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/08/26 17:44:01 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:31:05 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		*ft_memmove(void *dest, const void *src, size_t n);
 // copy strings take the full size of the buffer
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 // concatenate strings take the full size of the buffer
-size_t		ft_strlcat(char *dest, char *src, size_t size);
+size_t		ft_strlcat(char *dest, const char *src, size_t size);
 // returns a pointer to the first occurrence of the character c
 char		*ft_strchr(const char *s, int c);
 // returns a pointer to the last occurrence of the character c
@@ -101,7 +101,7 @@ char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 // Allocates with malloc and returns a string representing the integer received
 // as an argument. Negative numbers must be handled.
-char		*ft_itoa(long int n);
+char		*ft_itoa(int n);
 // Applies the function ’f’ to each character of the string ’s’, and passing its
 // index as first argument to create a new string with malloc resulting from
 // successive applications of ’f’

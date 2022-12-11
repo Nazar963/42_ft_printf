@@ -11,79 +11,78 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned int	i;
-	char			*pdest;
-	const char		*psrc;
-	char			*tmp;
+	char			step;
+	size_t			index;
+	unsigned char	*dest;
+	unsigned char	*source;
 
-	i = 0;
-	pdest = (char *)dest;
-	psrc = (const char *)src;
-	tmp = (char *)malloc(sizeof(*tmp) * n);
-	if (!tmp)
+	if (dst == NULL && src == NULL)
 		return (NULL);
-	while (i < n)
+	step = +1;
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	if (dst > src)
 	{
-		*(tmp + i) = *(psrc + i);
-		i++;
+		step = -1;
+		dest = (unsigned char *)(dst + len - 1);
+		source = (unsigned char *)(src + len - 1);
 	}
-	i = 0;
-	while (i < n)
+	index = 0;
+	while (index < len)
 	{
-		*(pdest + i) = *(tmp + i);
-		i++;
+		*dest = *source;
+		dest += step;
+		source += step;
+		index++;
 	}
-	free (tmp);
-	return (dest);
+	return (dst);
 }
+
 /*int	main(void)
 {
-	//my ft_memmove
-	char cSrc[] = "loco is loco";
-	char cDest[100];
+	// // my ft_memmove
+	// char cSrc[] = "loco is loco";
+	// char cDest[100];
 
-	ft_memmove(cDest, cSrc, 13);
-	printf("mine: %s\n", cDest);
+	// ft_memmove(cDest, cSrc, 3);
+	// printf("mine: %s\n", cDest);
+
+	// // og memmove
+	// char sSrc[] = "loco is loco";
+	// char sDest[100];
+	// sDest[3] = '\0';
+	// memmove(sDest, sSrc, 3);
+	// printf("og: %s\n", sDest);
+
+	// //my ft_memmove
+	// int iSrc[] = {67, 68, 67, 68, 69, 0, 45};
+	// int n = sizeof(iSrc)/sizeof(iSrc[0]);
+	// int iDest[] = {67, 68, 67, 68, 69, 0, 45};
+	// int index = 0;
+
+	// ft_memmove(iDest + 1, iSrc, 2);
+	// printf("\nmine array: ");
+
+	// for (index=0; index<n; index++)
+	// {
+	// 	printf("%d ", iDest[index]);
+	// }
 
 	//og memmove
-	char sSrc[] = "loco is loco";
-	char sDest[100];
+	char sResult[] = {'C', 'D', 'C', 'D', 'E', 0, '-'};
+	//int wn = sizeof(sResult)/sizeof(sResult[0]);
+	//int wDest[] = {67, 68, 67, 68, 69, 0, 45}; 
+	//int	windex = 0;
+	//memmove(sResult + 1, sResult, 2);
+	printf("og array:\t%s\n", memmove(sResult + 1, sResult, 2));
 
-	memmove(sDest, sSrc, 13);
-	printf("og: %s\n", sDest);
+	char new_test[] = {'C', 'D', 'C', 'D', 'E', 0, '-'};
+	printf("my array:\t%s\n", ft_memmove(new_test + 1, new_test, 2));
 
-	//my ft_memmove
-	int iSrc[] = {10, 20, 30, 40, 50};
-	int n = sizeof(iSrc)/sizeof(iSrc[0]);
-	int iDest[n], index = 0;
-
-	ft_memmove(iDest, iSrc, sizeof(iSrc));
-	printf("\nmine array: ");
-
-	for (index=0; index<n; index++)
-	{
-		printf("%d ", iDest[index]);
-	}
-
-	//og memmove
-	int wSrc[] = {10, 20, 30, 40, 50};
-	int wn = sizeof(wSrc)/sizeof(wSrc[0]);
-	int wDest[wn], windex = 0;
-
-	memmove(wDest, wSrc, sizeof(wSrc));
-	printf("\nog array: ");
-
-	for (windex=0; windex<wn; windex++)
-	{
-		printf("%d ", wDest[windex]);
-	}
-	printf("\n");
-	
 	return (0);
 }*/

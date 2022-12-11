@@ -6,22 +6,12 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:07:57 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/11/29 20:12:47 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/12/11 10:55:25 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../include/ft_printf.h"
-
-void	width_percent(const char *str, t_hint *loco, int *i)
-{
-	if (loco->type[0] == 'w')
-	{
-		while (loco->width--)
-			write(1, " ", 1);
-	}
-	ft_putchar_fd(str[*i], 1);
-}
 
 int	width_process(const char *str, t_hint *loco, int i)
 {
@@ -34,14 +24,9 @@ int	width_process(const char *str, t_hint *loco, int i)
 	if ((str[i] == '.' || str[i] == '-') && ft_isdigit(str[i + 1]))
 		width_two(str, loco, &i);
 	else if (str[i] == '.' && ft_isdigit(str[i + 1]) == 0 && str[i + 1] == 's')
-	{
-		loco->type[0] = 'd';
-		if (str[i + 1] == 's')
-			loco->widthx = loco->width;
-		loco->width = 0;
-		i++;
-	}
-	else if (str[i] == '.' && (str[i + 1] == 'x' || str[i + 1] == 'X') && va_arg(loco->args2, int) != 0)
+		i = width_process_1(str, loco, i);
+	else if (str[i] == '.' && (str[i + 1] == 'x' || str[i + 1] == 'X')
+		&& va_arg(loco->args2, int) != 0)
 	{
 		loco->type[1] = 'n';
 		i++;
@@ -61,23 +46,10 @@ int	left_process(const char *str, t_hint *loco, int i)
 	{
 		while (str[i] == '-')
 			i++;
-		i--;	
+		i--;
 	}
 	if (str[i + 1] == '#')
-	{
-		if (str [i + 2] == '.')
-		{
-			i += 2;
-			i = leading_process(str, loco, i);
-			loco->type[2] = 'q';
-			return (i);
-		}
-		else
-		{
-			loco->type[2] = 'm';
-			i++;
-		}
-	}
+		i = left_process(str, loco, i);
 	if (ft_isdigit(str[i + 1]) == 1)
 	{
 		i++;
@@ -85,12 +57,7 @@ int	left_process(const char *str, t_hint *loco, int i)
 	}
 	i++;
 	if (str[i] == '.')
-	{
-		// loco->widthx = loco->width;
 		i = leading_process(str, loco, i);
-		// loco->width = loco->widthx;
-		// loco->type[0] = '-'; 
-	}
 	return (i);
 }
 
@@ -99,16 +66,8 @@ static int	me_dot(const char *str, t_hint *loco, int *i)
 	loco->type[0] = '.';
 	if (str[*i + 1] == '0' && va_arg(loco->args2, char *) == NULL)
 	{
-		(*i)++;
-		if (ft_isdigit(str[*i + 1]) == 1)
-			(*i)++;
-		loco->width += str[*i] - '0';
-		if (loco->width < 6)
-			loco->width = 0;
-		// while (ft_isdigit(str[*i + 1]) == 1)
-		// 	(*i)++;
-		(*i)++;
-		return (*i);
+		me_dot_1(str, loco, i);
+		(*i)--;
 	}
 	if (ft_isdigit(str[*i + 2]) == 1)
 	{
@@ -159,11 +118,8 @@ static int	me_dot_second(const char *str, t_hint *loco, int *i)
 
 int	leading_process(const char *str, t_hint *loco, int i)
 {
-	if (str[i + 1] == '#')
-	{
+	if (str[i + 1] == '#' && i++)
 		loco->type[2] = 'm';
-		i++;
-	}
 	if (str[i] == '.')
 	{
 		if (loco->type[0] == '-')
@@ -180,11 +136,8 @@ int	leading_process(const char *str, t_hint *loco, int i)
 	width_four(str, loco, &i);
 	if ((str[i] == '.') && ft_isdigit(str[i + 1]) == 1)
 		width_five(str, loco, &i);
-	else if ((str[i] == '.') && ft_isdigit(str[i + 1]) == 0)
-	{
+	else if ((str[i] == '.') && ft_isdigit(str[i + 1]) == 0 && i++)
 		loco->type[2] = '.';
-		i++;
-	}
 	else if (str[i] == '-')
 		i = left_process(str, loco, i);
 	return (i);

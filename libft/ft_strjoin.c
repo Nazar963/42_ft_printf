@@ -11,50 +11,52 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdlib.h> // malloc
-// #include <stdio.h> // printf for testing
+// #include <stdio.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len;
-	char	*p;
+	int		i;
+	int		j;
+	size_t	len;
+	char	*ptr;
 
+	i = 0;
+	j = 0;
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	p = (char *)malloc(len * sizeof(*p));
-	if (!p)
+	ptr = (char *)malloc(len * sizeof(*ptr));
+	if (!ptr)
 		return (NULL);
-	while (*s1 != '\0')
+	while (s1[i])
 	{
-		*p++ = *s1++;
+		ptr[i] = s1[i];
+		i++;
 	}
-	while (*s2 != '\0')
-	{
-		*p++ = *s2++;
-	}
-	*(p + len) = '\0';
-	return (p - len + 1);
+	while (s2[j])
+		ptr[i++] = s2[j++];
+	ptr[i] = '\0';
+	return (ptr);
 }
 /*int main(void)
 {
-	char	s1[] = "lorem ipsum";
-	char	s2[] = "dolor sit amet";
+	char	s1[] = "hello";
+	char	s2[] = " you";
 	printf("%s\n", ft_strjoin(s1, s2));
 	
-	char	as1[] = "lorem ipsum";
-	char	as2[] = "dolor sit amet";
-	as1[0] = '\0';
-	printf("%s\n", ft_strjoin(as1, as2));
+	// char	as1[] = "lorem ipsum";
+	// char	as2[] = "dolor sit amet";
+	// as1[0] = '\0';
+	// printf("%s\n", ft_strjoin(as1, as2));
 	
-	char	ss1[] = "lorem ipsum";
-	char	ss2[] = "dolor sit amet";
-	ss2[0] = '\0';
-	printf("%s\n", ft_strjoin(ss1, ss2));
+	// char	ss1[] = "lorem ipsum";
+	// char	ss2[] = "dolor sit amet";
+	// ss2[0] = '\0';
+	// printf("%s\n", ft_strjoin(ss1, ss2));
 	
-	char	ws1[] = "lorem ipsum";
-	char	ws2[] = "dolor sit amet";
-	ws1[0] = '\0';
-	ws2[0] = '\0';
-	printf("%s\n", ft_strjoin(ws1, ws2));
+	// char	ws1[] = "lorem ipsum";
+	// char	ws2[] = "dolor sit amet";
+	// ws1[0] = '\0';
+	// ws2[0] = '\0';
+	// printf("%s\n", ft_strjoin(ws1, ws2));
 
 	return (0);
 }*/

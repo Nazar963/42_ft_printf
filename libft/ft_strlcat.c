@@ -23,13 +23,13 @@ static int	str_length(char *str)
 	return (i);
 }
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	src_length;
 	size_t	dst_length;
 	size_t	i;
 
-	src_length = str_length(src);
+	src_length = str_length((char *)src);
 	dst_length = str_length(dest);
 	i = 0;
 	if (size < 1)

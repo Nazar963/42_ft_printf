@@ -6,7 +6,7 @@
 /*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:37:24 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/09/03 17:16:04 by naal-jen         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:34:16 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,7 @@ void	number_unsigned(unsigned n, t_hint *loco)
 	if (loco->width > 0 && loco->width > count_digits(n))
 		int_helper_four(n, count_digits(n), loco);
 	else
-	{
-		loco->width = 0;
-		if (loco->widthx > 0 && n > 0)
-			loco->widthx -= count_digits(n);
-		else if (loco->widthx > 0 && n < 0)
-			loco->widthx -= count_digits(n) - 1;
-		if (loco->widthx < 0)
-			loco->widthx = 0;
-	}
+		number_unsigned_else(n, loco);
 	if (loco->type[2] == '+')
 		loco->type[2] = 0;
 	process_number_flag(loco, n);
@@ -123,22 +115,12 @@ void	number(long int n, t_hint *loco)
 		me_dot_number(loco);
 	if (loco->type[0] == 'a')
 		return ;
-	if (loco->width > 0 && loco->width >= count_digits(n))
-		int_helper_four(n, count_digits(n), loco);
-	else
-	{
-		loco->width = 0;
-		if (loco->widthx > 0 && n > 0)
-			loco->widthx -= count_digits(n);
-		else if (loco->widthx > 0 && n < 0)
-			loco->widthx -= count_digits(n) - 1;
-		if (loco->widthx < 0)
-			loco->widthx = 0;
-	}
+	number_1(n, loco);
 	process_number_flag(loco, n);
 	int_helper_five(n, loco);
 	if ((loco->type[0] == '0' || loco->type[0] == '.' || loco->type[2] == '.')
-		&& n < 0 && (loco->width == -1 || loco->widthx == -1) && loco->type[1] != '_')
+		&& n < 0 && (loco->width == -1 || loco->widthx == -1)
+		&& loco->type[1] != '_')
 		n *= -1;
 	string = ft_itoa(n);
 	if (loco->type[1] != 'y')
