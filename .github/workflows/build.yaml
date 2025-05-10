@@ -1,4 +1,4 @@
-name: Build libft
+name: Build 42_ft_printf
 on:
     push:
         branches: [ "main" ]
