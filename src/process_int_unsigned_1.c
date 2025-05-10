@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_int_unsigned_1.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naal-jen <naal-jen@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: naal-jen <naal-jen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:30:12 by naal-jen          #+#    #+#             */
-/*   Updated: 2022/12/07 11:03:06 by naal-jen         ###   ########.fr       */
+/*   Updated: 2025/05/10 19:51:56 by naal-jen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	number_unsigned_else(unsigned n, t_hint *loco)
 	loco->width = 0;
 	if (loco->widthx > 0 && n > 0)
 		loco->widthx -= count_digits(n);
-	else if (loco->widthx > 0 && n < 0)
+	else if (loco->widthx > 0)
 		loco->widthx -= count_digits(n) - 1;
 	if (loco->widthx < 0)
 		loco->widthx = 0;
