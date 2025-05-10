@@ -1,10 +1,10 @@
-name: Build 42_ft_printf
+name: Build libft
 on:
     push:
         branches: [ "main" ]
     pull_request:
 jobs:
-    build-42_ft_printf:
+    build-libft:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
