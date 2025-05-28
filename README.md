@@ -1,4 +1,4 @@
-# ft_printf 🖨️
+# Ft_printf 🖨️
 
 [![42 School](https://img.shields.io/badge/42-School-blue)](https://42firenze.it/)
 [![GitHub license](https://img.shields.io/github/license/Nazar963/42_ft_printf)](https://github.com/Nazar963/42_ft_printf/blob/master/LICENSE)
@@ -110,8 +110,16 @@ Validated with:
 - Peer code reviews and debugging sessions
 - Open source community testers
 
+## 🤝 Contributing
+
+Feel free to submit issues or pull requests if you have suggestions for improving the test suite or adding more test cases.
+
 ## License
 Distributed under the MIT License - see [LICENSE](LICENSE) for details.
+
+## 📧 Contact
+
+For questions or feedback, please open an issue in the repository.
 
 ---
 
@@ -120,3 +128,7 @@ Distributed under the MIT License - see [LICENSE](LICENSE) for details.
 
 [![42 School](https://img.shields.io/badge/42-profile-blue)](https://profile-v3.intra.42.fr/users/naal-jen)
 [![GitHub Profile](https://img.shields.io/badge/GitHub-Nazar963-lightgrey)](https://github.com/Nazar963)
+
+---
+
+Good luck with your Ft_printf project at 42! 🚀
