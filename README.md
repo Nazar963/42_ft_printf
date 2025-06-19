@@ -111,25 +111,26 @@ Validated with:
 - Open source community testers
 
 ## 🤝 Contributing
-
-Feel free to submit issues or pull requests if you have suggestions for improving the test suite or adding more test cases.
+Feel free to submit issues or pull requests if you have suggestions for improving the application or adding more features.
 
 ## License
 Distributed under the MIT License - see [LICENSE](LICENSE) for details.
 
 ## 📧 Contact
-
 For questions or feedback, please open an issue in the repository.
+
+
+## ⭐ Star this repository if you found it helpful!
+[![GitHub stars](https://img.shields.io/github/stars/Nazar963/42_ft_printf?style=social)](https://github.com/Nazar963/42_ft_printf/stargazers)
 
 ---
 
-🚀 Show your support by starring this repository!  
-[![GitHub stars](https://img.shields.io/github/stars/Nazar963/42_ft_printf?style=social)](https://github.com/Nazar963/42_ft_printf/stargazers)
+🗿 *"In the chaos of bytes, we bring order – where every % tells a story, and every conversion specifier sings in perfect memory harmony."*
 
 [![42 School](https://img.shields.io/badge/42-profile-blue)](https://profile-v3.intra.42.fr/users/naal-jen)
 [![GitHub Profile](https://img.shields.io/badge/GitHub-Nazar963-lightgrey)](https://github.com/Nazar963)
 [![GitHub Follow](https://img.shields.io/github/followers/Nazar963?style=social)](https://github.com/Nazar963)
 
 ---
-
+## 🍀 Goodluck:
 Good luck with your Ft_printf project at 42! 🚀
